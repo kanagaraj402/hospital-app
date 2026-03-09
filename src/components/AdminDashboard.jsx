@@ -24,7 +24,7 @@ function AdminDashboard() {
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'grey.50' }}>
+    <Box sx={{ width: '100vw', minHeight: '100vh', bgcolor: 'grey.50' }}>
       <AppBar position="static">
         <Toolbar>
           <LocalHospitalIcon sx={{ mr: 2 }} />
@@ -38,7 +38,7 @@ function AdminDashboard() {
         </Toolbar>
       </AppBar>
 
-      <Box sx={{ p: 3 }}>
+      <Box sx={{ width: '100%', p: 3 }}>
         <Paper elevation={3}>
           <Tabs value={currentTab} onChange={handleTabChange}>
             <Tab label="Doctor Configuration" />

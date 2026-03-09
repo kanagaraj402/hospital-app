@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllDoctors, createTreatment, calculateTreatmentPreview } from '../services/api';
 import {
   Paper, Typography, TextField, Button, Alert,
-  MenuItem, Box, InputAdornment, Divider, Grid2
+  MenuItem, Box, InputAdornment, Divider, Grid
 } from '@mui/material';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -219,8 +219,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
           <Typography variant="h6" gutterBottom sx={{ color: 'primary.main', mb: 2 }}>
             Patient Information
           </Typography>
-          <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 12 }}>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Patient Name"
@@ -231,9 +231,9 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 placeholder="Enter patient's full name"
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 size={{ xs: 12 }}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Medical Record Number (6 Digits)"
@@ -247,8 +247,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 error={formData.medical_record_number.length > 0 && formData.medical_record_number.length !== 6}
                 size="small"
               />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </Box>
 
         <Divider sx={{ my: 3 }} />
@@ -258,8 +258,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
           <Typography variant="h6" gutterBottom sx={{ color: 'primary.main', mb: 2 }}>
             Treatment Period
           </Typography>
-          <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 12 }}>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12 }}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   label="From Date"
@@ -268,9 +268,9 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                   slotProps={{ textField: { fullWidth: true, required: true, size: 'small' } }}
                 />
               </LocalizationProvider>
-            </Grid2>
+            </Grid>
 
-            <Grid2 size={{ xs: 12 }}>
+            <Grid size={{ xs: 12 }}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   label="To Date"
@@ -280,9 +280,9 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                   slotProps={{ textField: { fullWidth: true, required: true, size: 'small' } }}
                 />
               </LocalizationProvider>
-            </Grid2>
+            </Grid>
 
-           <Grid2 size={{ xs: 12 }}>
+           <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Number of Days"
@@ -294,8 +294,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 helperText={`Auto-calculated: ${splitData.calculated_days} days`}
                 size="small"
               />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </Box>
 
         <Divider sx={{ my: 3 }} />
@@ -305,8 +305,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
           <Typography variant="h6" gutterBottom sx={{ color: 'primary.main', mb: 2 }}>
             Treatment Details
           </Typography>
-          <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 12 }}>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 select
@@ -320,10 +320,10 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 <MenuItem value="op">OP (Out Patient)</MenuItem>
                 <MenuItem value="ip">IP (In Patient)</MenuItem>
               </TextField>
-            </Grid2>
+            </Grid>
 
             {formData.treatment_type === 'op' && (
-              <Grid2 size={{ xs: 12 }}>
+              <Grid size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   select
@@ -337,10 +337,10 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                   <MenuItem value="direct">Direct OP</MenuItem>
                   <MenuItem value="indirect">Indirect OP</MenuItem>
                 </TextField>
-              </Grid2>
+              </Grid>
             )}
 
-            <Grid2 size={{ xs: 12 }}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 select
@@ -363,8 +363,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                   </MenuItem>
                 ))}
               </TextField>
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </Box>
 
         <Divider sx={{ my: 3 }} />
@@ -374,8 +374,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
           <Typography variant="h6" gutterBottom sx={{ color: 'primary.main', mb: 2 }}>
             Billing Information
           </Typography>
-          <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 12 }}>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Treatment Charges Per Day"
@@ -391,9 +391,9 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 placeholder="Enter charge"
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 size={{ xs: 12 }}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Total Amount"
@@ -412,8 +412,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 }}
                 size="small"
               />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </Box>
 
         <Divider sx={{ my: 3 }} />
@@ -423,8 +423,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
           <Typography variant="h6" gutterBottom sx={{ color: 'primary.main', mb: 2 }}>
             Split Details (Auto-calculated from Configuration)
           </Typography>
-          <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 12 }}>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Physiotherapist Split"
@@ -442,9 +442,9 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 }}
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 size={{ xs: 12 }}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Doctor Split"
@@ -462,9 +462,9 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 }}
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 size={{ xs: 12 }}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Hospital Split"
@@ -482,15 +482,15 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
                 }}
                 size="small"
               />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </Box>
 
         <Divider sx={{ my: 3 }} />
 
         {/* Action Buttons */}
-        <Grid2 container spacing={2} justifyContent="flex-end">
-          <Grid2>
+        <Grid container spacing={2} justifyContent="flex-end">
+          <Grid>
             <Button
               variant="outlined"
               size="large"
@@ -500,8 +500,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
             >
               Cancel
             </Button>
-          </Grid2>
-          <Grid2>
+          </Grid>
+          <Grid>
             <Button
               variant="contained"
               size="large"
@@ -511,8 +511,8 @@ function TreatmentForm({ physioUserId, onSuccess, onClose }) {
             >
               {success ? 'Created Successfully!' : loading ? 'Creating...' : 'Create Treatment Record'}
             </Button>
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
       </Box>
     </Paper>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Box, Typography, Paper, TextField, Button, Grid2, Alert, Divider
+  Box, Typography, Paper, TextField, Button, Grid, Alert, Divider
 } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { getHospitalConfig, updateHospitalConfig } from '../services/api';
@@ -75,14 +75,14 @@ function AdminHospitalConfig({ adminUserId }) {
           The remaining percentage will be automatically allocated to physiotherapist and doctor.
         </Typography>
 
-        <Grid2 container spacing={3}>
-          <Grid2 xs={12}>
+        <Grid container spacing={3}>
+          <Grid xs={12}>
             <Divider sx={{ mb: 2 }}>
               <Typography variant="subtitle2">Direct OP Configuration</Typography>
             </Divider>
-          </Grid2>
+          </Grid>
 
-          <Grid2 xs={12} md={4}>
+          <Grid xs={12} md={4}>
             <TextField
               fullWidth
               label="Hospital Direct OP Split %"
@@ -94,24 +94,24 @@ function AdminHospitalConfig({ adminUserId }) {
               helperText="Physio gets the remaining %"
               size="small"
             />
-          </Grid2>
+          </Grid>
 
-          <Grid2 xs={12} md={8}>
+          <Grid xs={12} md={8}>
             <Box sx={{ p: 2, bgcolor: 'info.lighter', borderRadius: 1 }}>
               <Typography variant="body2">
                 <strong>Direct OP Split:</strong> Hospital {formData.direct_op_split}% | 
                 Physio {(100 - formData.direct_op_split).toFixed(1)}%
               </Typography>
             </Box>
-          </Grid2>
+          </Grid>
 
-          <Grid2 xs={12}>
+          <Grid xs={12}>
             <Divider sx={{ my: 2 }}>
               <Typography variant="subtitle2">Indirect OP Configuration</Typography>
             </Divider>
-          </Grid2>
+          </Grid>
 
-          <Grid2 xs={12} md={4}>
+          <Grid xs={12} md={4}>
             <TextField
               fullWidth
               label="Hospital Indirect OP Split %"
@@ -123,9 +123,9 @@ function AdminHospitalConfig({ adminUserId }) {
               helperText="Doctor split is configured per doctor"
               size="small"
             />
-          </Grid2>
+          </Grid>
 
-          <Grid2 xs={12} md={8}>
+          <Grid xs={12} md={8}>
             <Box sx={{ p: 2, bgcolor: 'warning.lighter', borderRadius: 1 }}>
               <Typography variant="body2">
                 <strong>Indirect OP Split:</strong> Hospital {formData.indirect_op_split}% | 
@@ -135,15 +135,15 @@ function AdminHospitalConfig({ adminUserId }) {
                 Note: Doctor split is configured individually for each doctor
               </Typography>
             </Box>
-          </Grid2>
+          </Grid>
 
-          <Grid2 xs={12}>
+          <Grid xs={12}>
             <Divider sx={{ my: 2 }}>
               <Typography variant="subtitle2">IP Configuration</Typography>
             </Divider>
-          </Grid2>
+          </Grid>
 
-          <Grid2 xs={12} md={4}>
+          <Grid xs={12} md={4}>
             <TextField
               fullWidth
               label="Hospital IP Split %"
@@ -155,9 +155,9 @@ function AdminHospitalConfig({ adminUserId }) {
               helperText="Doctor split is configured per doctor"
               size="small"
             />
-          </Grid2>
+          </Grid>
 
-          <Grid2 xs={12} md={8}>
+          <Grid xs={12} md={8}>
             <Box sx={{ p: 2, bgcolor: 'success.lighter', borderRadius: 1 }}>
               <Typography variant="body2">
                 <strong>IP Split:</strong> Hospital {formData.ip_split}% | 
@@ -167,8 +167,8 @@ function AdminHospitalConfig({ adminUserId }) {
                 Note: Doctor split is configured individually for each doctor
               </Typography>
             </Box>
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
 
         <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end' }}>
           <Button

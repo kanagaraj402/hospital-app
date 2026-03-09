@@ -4,7 +4,7 @@ import {
   Table, TableBody, TableCell, TableContainer,
   TableHead, TableRow, IconButton, Dialog,
   DialogTitle, DialogContent, DialogActions,
-  Alert, Switch, Grid2, Chip
+  Alert, Switch, Grid, Chip
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
@@ -215,8 +215,8 @@ function AdminUsers({ adminUserId }) {
           {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
           {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
 
-          <Grid2 container spacing={2} sx={{ mt: 1 }}>
-            <Grid2 xs={12}>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Email (Login ID)"
@@ -227,9 +227,9 @@ function AdminUsers({ adminUserId }) {
                 required
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Password"
@@ -241,9 +241,9 @@ function AdminUsers({ adminUserId }) {
                 helperText="Minimum 6 characters"
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12} sm={6}>
+            <Grid xs={12} sm={6}>
               <TextField
                 fullWidth
                 label="First Name"
@@ -253,9 +253,9 @@ function AdminUsers({ adminUserId }) {
                 required
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12} sm={6}>
+            <Grid xs={12} sm={6}>
               <TextField
                 fullWidth
                 label="Last Name"
@@ -265,9 +265,9 @@ function AdminUsers({ adminUserId }) {
                 required
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Phone"
@@ -277,8 +277,8 @@ function AdminUsers({ adminUserId }) {
                 required
                 size="small"
               />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Cancel</Button>

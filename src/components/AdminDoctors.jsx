@@ -4,7 +4,7 @@ import {
   Table, TableBody, TableCell, TableContainer,
   TableHead, TableRow, IconButton, Dialog,
   DialogTitle, DialogContent, DialogActions,
-  Alert, Switch, Chip, Grid2
+  Alert, Switch, Chip, Grid
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
@@ -203,8 +203,8 @@ function AdminDoctors({ adminUserId }) {
           {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
           {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
 
-          <Grid2 container spacing={2} sx={{ mt: 1 }}>
-            <Grid2 xs={12}>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Doctor Name"
@@ -214,9 +214,9 @@ function AdminDoctors({ adminUserId }) {
                 required
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Education"
@@ -226,9 +226,9 @@ function AdminDoctors({ adminUserId }) {
                 placeholder="MBBS, MD, etc."
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Department"
@@ -238,9 +238,9 @@ function AdminDoctors({ adminUserId }) {
                 placeholder="Orthopedics, Neurology, etc."
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12}>
+            <Grid xs={12}>
               <TextField
                 fullWidth
                 label="Phone"
@@ -249,9 +249,9 @@ function AdminDoctors({ adminUserId }) {
                 onChange={handleChange}
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12} sm={6}>
+            <Grid xs={12} sm={6}>
               <TextField
                 fullWidth
                 label="Indirect OP Split %"
@@ -263,9 +263,9 @@ function AdminDoctors({ adminUserId }) {
                 required
                 size="small"
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 xs={12} sm={6}>
+            <Grid xs={12} sm={6}>
               <TextField
                 fullWidth
                 label="IP Split %"
@@ -277,8 +277,8 @@ function AdminDoctors({ adminUserId }) {
                 required
                 size="small"
               />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Button onClick={closePopup}>Cancel</Button>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Paper, Typography, Table, TableBody, TableCell,
-  TableContainer, TableHead, TableRow, Chip, Box, TextField, MenuItem, Grid2
+  TableContainer, TableHead, TableRow, Chip, Box, TextField, MenuItem, Grid
 } from '@mui/material';
 
 function TreatmentList({ treatments, currentPhysioId }) {
@@ -61,8 +61,8 @@ function TreatmentList({ treatments, currentPhysioId }) {
 
   return (
     <Paper elevation={3} sx={{ p: 3 }}>
-      <Grid2 container spacing={2} sx={{ mb: 3 }} alignItems="center">
-        <Grid2 xs={12} md={6}>
+      <Grid container spacing={2} sx={{ mb: 3 }} alignItems="center">
+        <Grid xs={12} md={6}>
           <Typography variant="h5">
             All Treatment Records ({filteredTreatments.length})
           </Typography>
@@ -71,9 +71,9 @@ function TreatmentList({ treatments, currentPhysioId }) {
               ? 'Showing treatments from all physiotherapists' 
               : `Filtered by doctor`}
           </Typography>
-        </Grid2>
+        </Grid>
         
-        <Grid2 xs={12} md={6}>
+        <Grid xs={12} md={6}>
           <TextField
             fullWidth
             select
@@ -89,8 +89,8 @@ function TreatmentList({ treatments, currentPhysioId }) {
               </MenuItem>
             ))}
           </TextField>
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
 
       {filteredTreatments.length === 0 ? (
         <Box sx={{ textAlign: 'center', py: 4 }}>
@@ -244,8 +244,8 @@ function TreatmentList({ treatments, currentPhysioId }) {
             <Typography variant="h6" gutterBottom>
               Summary
             </Typography>
-            <Grid2 container spacing={2}>
-              <Grid2 xs={12} sm={6} md={3}>
+            <Grid container spacing={2}>
+              <Grid xs={12} sm={6} md={3}>
                 <Paper sx={{ p: 2, bgcolor: 'primary.lighter', textAlign: 'center' }}>
                   <Typography variant="body2" color="text.secondary">
                     Total Billing
@@ -254,8 +254,8 @@ function TreatmentList({ treatments, currentPhysioId }) {
                     ₹{totals.totalAmount.toFixed(2)}
                   </Typography>
                 </Paper>
-              </Grid2>
-              <Grid2 xs={12} sm={6} md={3}>
+              </Grid>
+              <Grid xs={12} sm={6} md={3}>
                 <Paper sx={{ p: 2, bgcolor: 'success.lighter', textAlign: 'center' }}>
                   <Typography variant="body2" color="text.secondary">
                     Physio Split
@@ -264,8 +264,8 @@ function TreatmentList({ treatments, currentPhysioId }) {
                     ₹{totals.physioSplit.toFixed(2)}
                   </Typography>
                 </Paper>
-              </Grid2>
-              <Grid2 xs={12} sm={6} md={3}>
+              </Grid>
+              <Grid xs={12} sm={6} md={3}>
                 <Paper sx={{ p: 2, bgcolor: 'info.lighter', textAlign: 'center' }}>
                   <Typography variant="body2" color="text.secondary">
                     Doctor Split
@@ -274,8 +274,8 @@ function TreatmentList({ treatments, currentPhysioId }) {
                     ₹{totals.doctorSplit.toFixed(2)}
                   </Typography>
                 </Paper>
-              </Grid2>
-              <Grid2 xs={12} sm={6} md={3}>
+              </Grid>
+              <Grid xs={12} sm={6} md={3}>
                 <Paper sx={{ p: 2, bgcolor: 'warning.lighter', textAlign: 'center' }}>
                   <Typography variant="body2" color="text.secondary">
                     Hospital Split
@@ -284,8 +284,8 @@ function TreatmentList({ treatments, currentPhysioId }) {
                     ₹{totals.hospitalSplit.toFixed(2)}
                   </Typography>
                 </Paper>
-              </Grid2>
-            </Grid2>
+              </Grid>
+            </Grid>
           </Box>
         </>
       )}

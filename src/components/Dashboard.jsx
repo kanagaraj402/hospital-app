@@ -5,7 +5,7 @@ import {
   Box, Typography, Button, Paper, AppBar,
   Toolbar, Card, CardContent, CircularProgress,
   Table, TableBody, TableCell, TableContainer,
-  TableHead, TableRow, MenuItem, TextField, Alert, Grid2
+  TableHead, TableRow, MenuItem, TextField, Alert, Grid
 } from '@mui/material';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -158,11 +158,11 @@ function Dashboard() {
       <Box sx={{ p: 3 }}>
         {/* Welcome Card */}
         <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
-          <Grid2 container spacing={2} alignItems="center">
-            <Grid2>
+          <Grid container spacing={2} alignItems="center">
+            <Grid>
               <MedicalServicesIcon sx={{ fontSize: 60, color: 'primary.main' }} />
-            </Grid2>
-            <Grid2 xs>
+            </Grid>
+            <Grid xs>
               <Typography variant="h4">
                 Welcome, {physio?.first_name} {physio?.last_name}!
               </Typography>
@@ -172,13 +172,13 @@ function Dashboard() {
               <Typography color="text.secondary">
                 Phone: {physio?.phone}
               </Typography>
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </Paper>
 
         {/* Year & Month Selectors */}
-        <Grid2 container spacing={2} sx={{ mb: 3 }}>
-          <Grid2 xs={12} sm={6} md={3}>
+        <Grid container spacing={2} sx={{ mb: 3 }}>
+          <Grid xs={12} sm={6} md={3}>
             <TextField
               fullWidth
               select
@@ -193,9 +193,9 @@ function Dashboard() {
                 </MenuItem>
               ))}
             </TextField>
-          </Grid2>
+          </Grid>
           
-          <Grid2 xs={12} sm={6} md={3}>
+          <Grid xs={12} sm={6} md={3}>
             <TextField
               fullWidth
               select
@@ -210,12 +210,12 @@ function Dashboard() {
                 </MenuItem>
               ))}
             </TextField>
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
 
         {/* Stats Cards */}
-        <Grid2 container spacing={3} sx={{ mb: 3 }}>
-          <Grid2 xs={12} sm={6} md={4}>
+        <Grid container spacing={3} sx={{ mb: 3 }}>
+          <Grid xs={12} sm={6} md={4}>
             <Card elevation={2}>
               <CardContent>
                 <Typography color="text.secondary" variant="subtitle2" gutterBottom>
@@ -229,8 +229,8 @@ function Dashboard() {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid2>
-          <Grid2 xs={12} sm={6} md={4}>
+          </Grid>
+          <Grid xs={12} sm={6} md={4}>
             <Card elevation={2}>
               <CardContent>
                 <Typography color="text.secondary" variant="subtitle2" gutterBottom>
@@ -244,8 +244,8 @@ function Dashboard() {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid2>
-          <Grid2 xs={12} sm={6} md={4}>
+          </Grid>
+          <Grid xs={12} sm={6} md={4}>
             <Card elevation={2}>
               <CardContent>
                 <Typography color="text.secondary" variant="subtitle2" gutterBottom>
@@ -259,8 +259,8 @@ function Dashboard() {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
 
         {/* Monthly Breakdown - Only show when "All Months" selected */}
         {selectedMonth === 'all' && stats?.monthly_stats && stats.monthly_stats.length > 0 && (
