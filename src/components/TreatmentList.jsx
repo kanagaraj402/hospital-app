@@ -60,20 +60,19 @@ function TreatmentList({ treatments, currentPhysioId }) {
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 3 }}>
-      <Grid container spacing={2} sx={{ mb: 3 }} alignItems="center">
-        <Grid xs={12} md={6}>
+    <Paper elevation={3} sx={{ p: 3, width: '100%' }}>
+      <Grid container spacing={2} alignItems="center" sx={{ mb: 3 }}>
+        <Grid item xs={12} md={6}>
           <Typography variant="h5">
             All Treatment Records ({filteredTreatments.length})
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {selectedDoctor === 'all' 
-              ? 'Showing treatments from all physiotherapists' 
-              : `Filtered by doctor`}
+            {selectedDoctor === 'all'
+              ? 'Showing treatments from all physiotherapists'
+              : 'Filtered by doctor'}
           </Typography>
         </Grid>
-        
-        <Grid xs={12} md={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             fullWidth
             select
@@ -91,7 +90,6 @@ function TreatmentList({ treatments, currentPhysioId }) {
           </TextField>
         </Grid>
       </Grid>
-
       {filteredTreatments.length === 0 ? (
         <Box sx={{ textAlign: 'center', py: 4 }}>
           <Typography variant="h6" color="text.secondary">
@@ -100,7 +98,7 @@ function TreatmentList({ treatments, currentPhysioId }) {
         </Box>
       ) : (
         <>
-          <TableContainer>
+          <TableContainer sx={{ width: '100%', overflowX: 'auto' }}>
             <Table>
               <TableHead>
                 <TableRow>
@@ -119,17 +117,14 @@ function TreatmentList({ treatments, currentPhysioId }) {
               </TableHead>
               <TableBody>
                 {filteredTreatments.map((treatment) => {
-                  const isMyTreatment = treatment.physiotherapist_id === currentPhysioId;
-                  
+                  const isMyTreatment =
+                    treatment.physiotherapist_id === currentPhysioId;
                   return (
-                    <TableRow 
-                      key={treatment.id} 
+                    <TableRow
+                      key={treatment.id}
                       hover
-                      sx={{ 
-                        bgcolor: isMyTreatment ? 'success.lighter' : 'inherit',
-                        '&:hover': {
-                          bgcolor: isMyTreatment ? 'success.light' : 'action.hover'
-                        }
+                      sx={{
+                        bgcolor: isMyTreatment ? 'success.lighter' : 'inherit'
                       }}
                     >
                       <TableCell>
@@ -144,9 +139,8 @@ function TreatmentList({ treatments, currentPhysioId }) {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography variant="body2">
-                          {new Date(treatment.from_date).toLocaleDateString()} - {new Date(treatment.to_date).toLocaleDateString()}
-                        </Typography>
+                        {new Date(treatment.from_date).toLocaleDateString()} -{' '}
+                        {new Date(treatment.to_date).toLocaleDateString()}
                       </TableCell>
                       <TableCell>
                         <Box sx={{ display: 'flex', gap: 0.5, flexDirection: 'column' }}>
@@ -166,127 +160,51 @@ function TreatmentList({ treatments, currentPhysioId }) {
                       </TableCell>
                       <TableCell>{treatment.number_of_days}</TableCell>
                       <TableCell align="right">
-                        <Typography variant="body1" fontWeight="bold" color="primary">
-                          ₹{treatment.total_amount.toFixed(2)}
-                        </Typography>
+                        ₹{treatment.total_amount.toFixed(2)}
                       </TableCell>
                       <TableCell align="right">
-                        <Typography 
-                          variant="body1" 
-                          color="success.main"
-                          fontWeight={isMyTreatment ? 'bold' : 'normal'}
-                        >
-                          ₹{treatment.physio_split.toFixed(2)}
-                        </Typography>
+                        ₹{treatment.physio_split.toFixed(2)}
                       </TableCell>
                       <TableCell align="right">
-                        <Typography variant="body1" color="info.main">
-                          ₹{treatment.doctor_split.toFixed(2)}
-                        </Typography>
+                        ₹{treatment.doctor_split.toFixed(2)}
                       </TableCell>
                       <TableCell align="right">
-                        <Typography variant="body1" color="warning.main">
-                          ₹{treatment.hospital_split.toFixed(2)}
-                        </Typography>
+                        ₹{treatment.hospital_split.toFixed(2)}
                       </TableCell>
                       <TableCell>
                         <Chip
                           label={treatment.created_by_name || 'Unknown'}
-                          color={isMyTreatment ? 'success' : 'default'}
                           size="small"
-                          variant={isMyTreatment ? 'filled' : 'outlined'}
+                          color={isMyTreatment ? 'success' : 'default'}
                         />
-                        {isMyTreatment && (
-                          <Typography variant="caption" display="block" color="success.main">
-                            You
-                          </Typography>
-                        )}
                       </TableCell>
                     </TableRow>
                   );
                 })}
-
-                {/* Totals Row */}
                 <TableRow sx={{ bgcolor: 'grey.200' }}>
                   <TableCell colSpan={6}>
-                    <Typography variant="h6" fontWeight="bold">
-                      TOTAL ({filteredTreatments.length} treatments)
+                    <Typography fontWeight="bold">
+                      TOTAL ({filteredTreatments.length})
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <Typography variant="h6" fontWeight="bold" color="primary">
-                      ₹{totals.totalAmount.toFixed(2)}
-                    </Typography>
+                    ₹{totals.totalAmount.toFixed(2)}
                   </TableCell>
                   <TableCell align="right">
-                    <Typography variant="h6" fontWeight="bold" color="success.main">
-                      ₹{totals.physioSplit.toFixed(2)}
-                    </Typography>
+                    ₹{totals.physioSplit.toFixed(2)}
                   </TableCell>
                   <TableCell align="right">
-                    <Typography variant="h6" fontWeight="bold" color="info.main">
-                      ₹{totals.doctorSplit.toFixed(2)}
-                    </Typography>
+                    ₹{totals.doctorSplit.toFixed(2)}
                   </TableCell>
                   <TableCell align="right">
-                    <Typography variant="h6" fontWeight="bold" color="warning.main">
-                      ₹{totals.hospitalSplit.toFixed(2)}
-                    </Typography>
+                    ₹{totals.hospitalSplit.toFixed(2)}
                   </TableCell>
-                  <TableCell></TableCell>
+                  <TableCell />
                 </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
 
-          {/* Summary Cards */}
-          <Box sx={{ mt: 3 }}>
-            <Typography variant="h6" gutterBottom>
-              Summary
-            </Typography>
-            <Grid container spacing={2}>
-              <Grid xs={12} sm={6} md={3}>
-                <Paper sx={{ p: 2, bgcolor: 'primary.lighter', textAlign: 'center' }}>
-                  <Typography variant="body2" color="text.secondary">
-                    Total Billing
-                  </Typography>
-                  <Typography variant="h5" color="primary" fontWeight="bold">
-                    ₹{totals.totalAmount.toFixed(2)}
-                  </Typography>
-                </Paper>
-              </Grid>
-              <Grid xs={12} sm={6} md={3}>
-                <Paper sx={{ p: 2, bgcolor: 'success.lighter', textAlign: 'center' }}>
-                  <Typography variant="body2" color="text.secondary">
-                    Physio Split
-                  </Typography>
-                  <Typography variant="h5" color="success.main" fontWeight="bold">
-                    ₹{totals.physioSplit.toFixed(2)}
-                  </Typography>
-                </Paper>
-              </Grid>
-              <Grid xs={12} sm={6} md={3}>
-                <Paper sx={{ p: 2, bgcolor: 'info.lighter', textAlign: 'center' }}>
-                  <Typography variant="body2" color="text.secondary">
-                    Doctor Split
-                  </Typography>
-                  <Typography variant="h5" color="info.main" fontWeight="bold">
-                    ₹{totals.doctorSplit.toFixed(2)}
-                  </Typography>
-                </Paper>
-              </Grid>
-              <Grid xs={12} sm={6} md={3}>
-                <Paper sx={{ p: 2, bgcolor: 'warning.lighter', textAlign: 'center' }}>
-                  <Typography variant="body2" color="text.secondary">
-                    Hospital Split
-                  </Typography>
-                  <Typography variant="h5" color="warning.main" fontWeight="bold">
-                    ₹{totals.hospitalSplit.toFixed(2)}
-                  </Typography>
-                </Paper>
-              </Grid>
-            </Grid>
-          </Box>
         </>
       )}
     </Paper>

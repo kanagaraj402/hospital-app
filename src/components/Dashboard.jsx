@@ -85,7 +85,7 @@ function Dashboard() {
 
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', width: '100vw' }}>
         <CircularProgress />
       </Box>
     );
@@ -93,7 +93,7 @@ function Dashboard() {
 
   if (error && !physio) {
     return (
-      <Box sx={{ minHeight: '100vh', bgcolor: 'grey.50' }}>
+      <Box sx={{ minHeight: '100vh', width: '100vw', bgcolor: 'grey.50' }}>
         <AppBar position="static">
           <Toolbar>
             <LocalHospitalIcon sx={{ mr: 2 }} />
@@ -141,7 +141,7 @@ function Dashboard() {
   ];
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'grey.50' }}>
+    <Box sx={{ minHeight: '100vh', width: '100vw', bgcolor: 'grey.50' }}>
       <AppBar position="static">
         <Toolbar>
           <LocalHospitalIcon sx={{ mr: 2 }} />
