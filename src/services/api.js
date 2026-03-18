@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000';
+// Use /api proxy when in production (Docker), localhost in development
+const API_URL = import.meta.env.DEV 
+  ? 'http://localhost:8000'
+  : '/api';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -14,7 +17,6 @@ const api = axios.create({
 // ============================================
 
 export const login = (credentials) => api.post('/login', credentials);
-
 export const getUser = (userId) => api.get(`/users/${userId}`);
 
 // ============================================
