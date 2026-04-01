@@ -108,6 +108,7 @@ function TreatmentList({ treatments, currentPhysioId }) {
                   <TableCell><strong>Date Range</strong></TableCell>
                   <TableCell><strong>Type</strong></TableCell>
                   <TableCell><strong>Days</strong></TableCell>
+                  <TableCell><strong>Doctor</strong></TableCell>
                   <TableCell align="right"><strong>Total Amount</strong></TableCell>
                   <TableCell align="right"><strong>Physio Split</strong></TableCell>
                   <TableCell align="right"><strong>Doctor Split</strong></TableCell>
@@ -159,6 +160,9 @@ function TreatmentList({ treatments, currentPhysioId }) {
                         </Box>
                       </TableCell>
                       <TableCell>{treatment.number_of_days}</TableCell>
+                      <TableCell>
+                          {treatment.doctor?.name || 'N/A'}
+                      </TableCell>
                       <TableCell align="right">
                         ₹{treatment.total_amount.toFixed(2)}
                       </TableCell>
@@ -182,7 +186,7 @@ function TreatmentList({ treatments, currentPhysioId }) {
                   );
                 })}
                 <TableRow sx={{ bgcolor: 'grey.200' }}>
-                  <TableCell colSpan={6}>
+                  <TableCell colSpan={7}>
                     <Typography fontWeight="bold">
                       TOTAL ({filteredTreatments.length})
                     </Typography>
