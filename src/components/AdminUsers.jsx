@@ -61,15 +61,23 @@ function AdminUsers({ adminUserId }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+
+    if (name === 'phone') {
+      const digitsOnly = value.replace(/\D/g, '').slice(0, 10);
+      setFormData({ ...formData, [name]: digitsOnly });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async () => {
     setError('');
     setSuccess('');
+
+    if (formData.phone.length !== 10) {
+      setError('Phone number must be exactly 10 digits');
+      return;
+    }
 
     try {
       await createPhysioUser(formData, adminUserId);
@@ -133,11 +141,7 @@ function AdminUsers({ adminUserId }) {
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h5">User Management</Typography>
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
-          onClick={handleOpenDialog}
-        >
+        <Button variant="contained" startIcon={<AddIcon />} onClick={handleOpenDialog}>
           Add Physiotherapist User
         </Button>
       </Box>
@@ -163,8 +167,8 @@ function AdminUsers({ adminUserId }) {
                 <TableCell>{user.id}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>
-                  <Chip 
-                    label={user.role.toUpperCase()} 
+                  <Chip
+                    label={user.role.toUpperCase()}
                     color={user.role === 'admin' ? 'error' : 'primary'}
                     size="small"
                   />
@@ -176,13 +180,13 @@ function AdminUsers({ adminUserId }) {
                     size="small"
                     disabled={user.id === adminUserId}
                   />
-                  <Chip 
+                  <Chip
                     label={user.is_active ? 'Active' : 'Inactive'}
                     color={user.is_active ? 'success' : 'default'}
                     size="small"
                   />
                 </TableCell>
-                <TableCell>{new Date(user.created_at).toLocaleDateString()}</TableCell>
+                <TableCell>{new Date(user.created_at).toLocaleDateString('en-GB')}</TableCell>
                 <TableCell>
                   <IconButton
                     size="small"
@@ -276,6 +280,12 @@ function AdminUsers({ adminUserId }) {
                 onChange={handleChange}
                 required
                 size="small"
+                inputProps={{ maxLength: 10 }}
+                onKeyPress={(e) => {
+                  if (!/[0-9]/.test(e.key)) e.preventDefault();
+                }}
+                helperText={`${formData.phone.length}/10 digits`}
+                error={formData.phone.length > 0 && formData.phone.length !== 10}
               />
             </Grid>
           </Grid>
